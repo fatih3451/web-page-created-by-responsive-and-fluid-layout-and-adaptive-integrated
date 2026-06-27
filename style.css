@@ -11,30 +11,35 @@ body {
     color: #333;
 }
 
-/* Akışkan Kapsayıcı (Ekrana göre genişler, maksimum 1200px olur) */
+/* Float temizleyici sınıf */
+.clear {
+    clear: both;
+}
+
+/* 960px Sabit Genişlik Kapsayıcısı */
 #wrapper {
-    width: 100%;
-    max-width: 1200px;
+    width: 960px;
     margin: 0 auto;
     background-color: #ffffff;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
 
-/* Header Tasarımı (Esnek Düzen) */
+/* Header Tasarımı */
 header {
     background-color: #111;
     padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* Mobilde alt alta geçebilmesi için */
-    gap: 15px;
 }
 
 #logo {
+    float: left;
     color: #ffcc00;
     font-size: 24px;
     font-weight: bold;
+}
+
+header nav {
+    float: right;
+    margin-top: 5px;
 }
 
 header nav a {
@@ -48,85 +53,81 @@ header nav a:hover {
     color: #ffcc00;
 }
 
-/* Akışkan Banner Bölümü */
+/* Banner Bölümü */
 #banner {
     position: relative;
-    width: 100%;
-    height: auto;
+    width: 960px;
+    height: 400px;
+    overflow: hidden;
 }
 
 #banner img {
-    width: 100%;
-    height: auto;
-    max-height: 450px;
-    display: block;
+    width: 960px;
+    height: 400px;
     object-fit: cover;
 }
 
 #banner-text {
     position: absolute;
-    bottom: 5%;
-    left: 5%;
+    bottom: 30px;
+    left: 30px;
     background-color: rgba(0, 0, 0, 0.7);
     color: #fff;
-    padding: 2% 4%;
-    font-size: 1.5rem;
+    padding: 15px 25px;
+    font-size: 24px;
     border-left: 5px solid #ffcc00;
-    max-width: 90%;
 }
 
 /* İçerik ve Menü Alanı */
 main {
-    padding: 4% 2%;
+    padding: 40px 20px;
 }
 
 main h1 {
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 2rem;
+    margin-bottom: 40px;
+    font-size: 28px;
     color: #111;
 }
 
-/* Flexbox ile Akışkan Burger Kutuları */
-.burger-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Ekran daralınca alt satıra geçmesi için */
-    gap: 20px;
-}
-
+/* Ürün Kutuları (3 Sütun Düzeni) */
 .burger-box {
-    flex: 1 1 calc(33.333% - 20px); /* 3 sütunlu akışkan yapı */
-    min-width: 280px; /* Kutuların çok fazla küçülmesini engeller */
+    float: left;
+    width: 290px;
+    margin-right: 25px;
     background: #fff;
     border: 1px solid #ddd;
     padding: 15px;
     text-align: center;
-    border-radius: 5px;
+}
+
+/* Son kutunun sağ boşluğunu sıfırlama */
+.burger-box.last-box {
+    margin-right: 0;
 }
 
 .burger-box img {
     width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3; /* Görsel oranını korur */
+    height: 200px;
     object-fit: cover;
     border-radius: 5px;
 }
 
 .burger-box h3 {
     margin: 15px 0 10px 0;
-    font-size: 1.25rem;
+    font-size: 20px;
 }
 
 .burger-box p {
-    font-size: 0.9rem;
+    font-size: 14px;
     color: #666;
+    height: 40px;
     margin-bottom: 15px;
 }
 
 .burger-box .price {
     display: block;
-    font-size: 1.15rem;
+    font-size: 18px;
     font-weight: bold;
     color: #e67e22;
 }
@@ -137,5 +138,5 @@ footer {
     color: #aaa;
     text-align: center;
     padding: 20px;
-    font-size: 0.9rem;
+    font-size: 14px;
 }
