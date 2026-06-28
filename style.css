@@ -10,10 +10,11 @@ body {
     color: #333;
 }
 
-/* 2. ADAPTIVE LAYOUT - MAIN CONTAINER (DEFAULT: DESKTOP) */
+/* 2. RESPONSIVE CONTAINER (FLUID WITH MAX-WIDTH) */
 .container {
-    width: 1200px;   /* Fixed at exactly 1200px on desktop screens */
-    margin: 0 auto;  /* Centers the website on the screen */
+    max-width: 1200px; /* Limits maximum width on large desktop screens */
+    width: 90%;        /* Fluidly scales down to take 90% of smaller screens */
+    margin: 0 auto;    /* Centers the website on the screen */
     background-color: #ffffff;
 }
 
@@ -59,14 +60,16 @@ nav ul li a:hover {
     padding-bottom: 10px;
 }
 
-/* 5. MENU & SPECIALS LAYOUT (DEFAULT: DESKTOP) */
+/* 5. MENU & SPECIALS LAYOUT (FLUID FLEXBOX) */
 .menu-grid {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap; /* Allows items to fluidly wrap to the next line */
+    gap: 20px;       /* Adds flexible spacing between wrapped elements */
     margin-bottom: 50px;
 }
 .menu-item {
-    width: 360px; /* 3 items fit perfectly side-by-side on desktop */
+    flex: 1 1 300px; /* Fluidly grows and shrinks, with a baseline size of 300px */
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
@@ -110,32 +113,19 @@ footer {
 }
 
 /* ======================================================= */
-/* 7. ADAPTIVE MEDIA QUERIES (DEVICES ADAPTATION CODES)    */
+/* 7. RESPONSIVE MEDIA QUERIES (SCREEN ADJUSTMENTS)         */
 /* ======================================================= */
 
-/* --- TABLET SETTINGS (Triggers when screen is below 1200px) --- */
-@media screen and (max-width: 1200px) {
-    .container {
-        width: 768px; /* Website width adapts to fixed 768px */
-    }
-    .menu-grid {
-        flex-wrap: wrap; /* Allows menu items to wrap to the next line */
-        gap: 20px;       /* Adds spacing between items when wrapped */
-    }
-    .menu-item {
-        width: 354px; /* Items expand to fit 2-column layout side-by-side */
-    }
-}
-
-/* --- MOBILE SETTINGS (Triggers when screen is below 768px) --- */
+/* --- MOBILE SETTINGS (Triggers automatically when screen is below 768px) --- */
 @media screen and (max-width: 768px) {
-    .container {
-        width: 480px; /* Website width adapts to fixed 480px */
+    header h1 {
+        font-size: 28px; /* Scales down header text size for smaller viewports */
     }
     nav ul li {
-        display: block;      /* Navigation links list vertically on mobile */
-        margin: 10px 0;
+        display: block;  /* Changes navigation menu to a clean vertical list */
+        margin: 12px 0;
     }
-    .menu-item {
-        width: 100%;  /* Items expand to take full width as a single column */
+    .main-content {
+        padding: 20px 10px; /* Reduces page padding on mobile screens */
     }
+}
