@@ -1,4 +1,4 @@
-/* 1. GENEL AYARLAR (RESET & BODY) */
+/* 1. GENERAL SETTINGS (RESET & BODY) */
 * {
     margin: 0;
     padding: 0;
@@ -10,11 +10,10 @@ body {
     color: #333;
 }
 
-/* 2. ESNEK GENİŞLİK DÜZENİ (FLUID LAYOUT) - DEĞİŞTİ */
+/* 2. ADAPTIVE LAYOUT - MAIN CONTAINER (DEFAULT: DESKTOP) */
 .container {
-    max-width: 1200px; /* En fazla 1200px olur */
-    width: 90%;        /* Küçük ekranlarda ekranın %90'ını kaplar */
-    margin: 0 auto;    /* Sayfayı ortalar */
+    width: 1200px;   /* Fixed at exactly 1200px on desktop screens */
+    margin: 0 auto;  /* Centers the website on the screen */
     background-color: #ffffff;
 }
 
@@ -26,7 +25,7 @@ header {
     text-align: center;
 }
 header h1 {
-    color: #ffcc00; /* Burger sarısı */
+    color: #ffcc00; /* Burger yellow color */
     margin-bottom: 15px;
     font-size: 36px;
 }
@@ -60,16 +59,14 @@ nav ul li a:hover {
     padding-bottom: 10px;
 }
 
-/* 5. MENU & SPECIALS (FLUID FLEXBOX) - DEĞİŞTİ */
+/* 5. MENU & SPECIALS LAYOUT (DEFAULT: DESKTOP) */
 .menu-grid {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; /* Kartlar sığmazsa alt satıra geçer */
-    gap: 20px;       /* Kartlar arasındaki esnek boşluk */
     margin-bottom: 50px;
 }
 .menu-item {
-    flex: 1 1 300px; /* Kartlar ekrana göre esner, minimum 300px olur */
+    width: 360px; /* 3 items fit perfectly side-by-side on desktop */
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
@@ -87,7 +84,7 @@ nav ul li a:hover {
     margin-top: 10px;
 }
 
-/* Öne Çıkan Kampanya Alanı */
+/* Featured Promo Area */
 .specials {
     background-color: #ffcc00;
     padding: 30px;
@@ -111,3 +108,34 @@ footer {
     margin-top: 40px;
     font-size: 14px;
 }
+
+/* ======================================================= */
+/* 7. ADAPTIVE MEDIA QUERIES (DEVICES ADAPTATION CODES)    */
+/* ======================================================= */
+
+/* --- TABLET SETTINGS (Triggers when screen is below 1200px) --- */
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 768px; /* Website width adapts to fixed 768px */
+    }
+    .menu-grid {
+        flex-wrap: wrap; /* Allows menu items to wrap to the next line */
+        gap: 20px;       /* Adds spacing between items when wrapped */
+    }
+    .menu-item {
+        width: 354px; /* Items expand to fit 2-column layout side-by-side */
+    }
+}
+
+/* --- MOBILE SETTINGS (Triggers when screen is below 768px) --- */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 480px; /* Website width adapts to fixed 480px */
+    }
+    nav ul li {
+        display: block;      /* Navigation links list vertically on mobile */
+        margin: 10px 0;
+    }
+    .menu-item {
+        width: 100%;  /* Items expand to take full width as a single column */
+    }
