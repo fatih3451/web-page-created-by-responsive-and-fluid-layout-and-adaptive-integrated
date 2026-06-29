@@ -10,11 +10,11 @@ body {
     color: #333;
 }
 
-/* 2. RESPONSIVE CONTAINER (FLUID WITH MAX-WIDTH) */
+/* 2. RESPONSIVE CONTAINER (FLUID + ADAPTIVE MAX BOUNDARY) */
 .container {
-    max-width: 1200px; /* Limits maximum width on large desktop screens */
-    width: 90%;        /* Fluidly scales down to take 90% of smaller screens */
-    margin: 0 auto;    /* Centers the website on the screen */
+    width: 90%; /* FLUID: Scales naturally on small screens */
+    max-width: 1200px; /* ADAPTIVE: Hard stop for large screens */
+    margin: 0 auto;
     background-color: #ffffff;
 }
 
@@ -26,16 +26,15 @@ header {
     text-align: center;
 }
 header h1 {
-    color: #ffcc00; /* Burger yellow color */
+    color: #ffcc00; /* Burger yellow */
     margin-bottom: 15px;
     font-size: 36px;
 }
 nav ul {
     list-style: none;
-}
-nav ul li {
-    display: inline;
-    margin: 0 15px;
+    display: flex; /* Flexbox for modern alignment */
+    justify-content: center;
+    gap: 20px;
 }
 nav ul li a {
     color: #fff;
@@ -60,21 +59,24 @@ nav ul li a:hover {
     padding-bottom: 10px;
 }
 
-/* 5. MENU & SPECIALS LAYOUT (FLUID FLEXBOX) */
+/* 5. MENU & SPECIALS (FLUID FLEXBOX BY DEFAULT) */
 .menu-grid {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; /* Allows items to fluidly wrap to the next line */
-    gap: 20px;       /* Adds flexible spacing between wrapped elements */
     margin-bottom: 50px;
+    gap: 20px; /* Creates fluid gaps between items */
 }
 .menu-item {
-    flex: 1 1 300px; /* Fluidly grows and shrinks, with a baseline size of 300px */
+    width: 32%; /* FLUID: Automatically shrinks/grows horizontally */
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
     text-align: center;
     background-color: #fff;
+}
+.menu-item img {
+    width: 100%; /* FLUID: Image scales with the container width */
+    height: auto;
 }
 .menu-item h3 {
     margin: 10px 0;
@@ -87,7 +89,7 @@ nav ul li a:hover {
     margin-top: 10px;
 }
 
-/* Featured Promo Area */
+/* Featured Campaign Area */
 .specials {
     background-color: #ffcc00;
     padding: 30px;
@@ -112,20 +114,31 @@ footer {
     font-size: 14px;
 }
 
-/* ======================================================= */
-/* 7. RESPONSIVE MEDIA QUERIES (SCREEN ADJUSTMENTS)         */
-/* ======================================================= */
+/* ==========================================================================
+   7. ADAPTIVE BREAKPOINTS (MEDIA QUERIES FOR STRUCTURE CHANGES)
+   ========================================================================== */
 
-/* --- MOBILE SETTINGS (Triggers automatically when screen is below 768px) --- */
-@media screen and (max-width: 768px) {
+/* MEDIUM SCREENS (Tablets - under 992px) */
+@media (max-width: 992px) {
+    .menu-grid {
+        flex-wrap: wrap; /* ADAPTIVE: Allows grid to break into next line */
+        justify-content: center;
+    }
+    .menu-item {
+        width: 45%; /* ADAPTIVE: Switches from 3 columns to 2 columns */
+    }
+}
+
+/* SMALL SCREENS (Smartphones - under 600px) */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column; /* ADAPTIVE: Stacks nav items vertically */
+        gap: 10px;
+    }
     header h1 {
-        font-size: 28px; /* Scales down header text size for smaller viewports */
+        font-size: 28px; /* ADAPTIVE: Shrinks font size on mobile */
     }
-    nav ul li {
-        display: block;  /* Changes navigation menu to a clean vertical list */
-        margin: 12px 0;
-    }
-    .main-content {
-        padding: 20px 10px; /* Reduces page padding on mobile screens */
+    .menu-item {
+        width: 100%; /* ADAPTIVE: Forces single column layout */
     }
 }
